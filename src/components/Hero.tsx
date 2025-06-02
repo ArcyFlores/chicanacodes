@@ -1,5 +1,12 @@
 
 const Hero = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative min-h-screen bg-gradient-to-b from-slate-900 via-blue-900 to-slate-800 overflow-hidden">
       {/* Stars Background */}
@@ -23,9 +30,9 @@ const Hero = () => {
       <div className="absolute bottom-0 right-0 w-96 h-24 bg-gradient-to-t from-blue-700/20 to-transparent rounded-t-full transform rotate-2"></div>
       
       <div className="container mx-auto px-4 py-20 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-between min-h-screen pt-20">
-          {/* Left Content */}
-          <div className="lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0">
+        <div className="flex items-center justify-center min-h-screen pt-20">
+          {/* Centered Content */}
+          <div className="text-center">
             <div className="mb-8">
               <h1 className="text-5xl lg:text-7xl font-bold mb-6">
                 <span className="bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
@@ -42,28 +49,19 @@ const Hero = () => {
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button className="bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900 font-bold py-4 px-8 rounded-full hover:shadow-lg hover:shadow-yellow-400/25 transition-all duration-300 transform hover:-translate-y-1">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button 
+                onClick={() => scrollToSection('tutorials')}
+                className="bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900 font-bold py-4 px-8 rounded-full hover:shadow-lg hover:shadow-yellow-400/25 transition-all duration-300 transform hover:-translate-y-1"
+              >
                 Start Learning
               </button>
-              <button className="border-2 border-yellow-400 text-yellow-400 font-bold py-4 px-8 rounded-full hover:bg-yellow-400 hover:text-slate-900 transition-all duration-300">
+              <button 
+                onClick={() => scrollToSection('articles')}
+                className="border-2 border-yellow-400 text-yellow-400 font-bold py-4 px-8 rounded-full hover:bg-yellow-400 hover:text-slate-900 transition-all duration-300"
+              >
                 Browse Articles
               </button>
-            </div>
-          </div>
-
-          {/* Right Content - Logo */}
-          <div className="lg:w-1/2 flex justify-center lg:justify-end">
-            <div className="relative">
-              <div className="w-80 h-80 lg:w-96 lg:h-96 relative">
-                <img 
-                  src="/lovable-uploads/df36c27f-1399-4270-92c7-fe40c5eb1038.png" 
-                  alt="Chicana Codes Space Mascot"
-                  className="w-full h-full object-contain animate-float"
-                />
-                {/* Glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-xl"></div>
-              </div>
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import Hero from '../components/Hero';
 import BlogCard from '../components/BlogCard';
 import Footer from '../components/Footer';
-import { Star, Sparkles, Code, Rocket } from 'lucide-react';
+import { Star, Sparkles, Code, Rocket, BookOpen, Play } from 'lucide-react';
 
 const Index = () => {
   const featuredArticles = [
@@ -57,10 +57,86 @@ const Index = () => {
     }
   ];
 
+  const tutorials = [
+    {
+      title: "HTML & CSS Fundamentals",
+      description: "Master the building blocks of web development",
+      duration: "4 hours",
+      level: "Beginner",
+      color: "from-green-400 to-emerald-500"
+    },
+    {
+      title: "JavaScript Essentials",
+      description: "Learn programming logic and interactivity",
+      duration: "6 hours",
+      level: "Beginner",
+      color: "from-yellow-400 to-orange-500"
+    },
+    {
+      title: "React Development",
+      description: "Build modern web applications",
+      duration: "8 hours",
+      level: "Intermediate",
+      color: "from-blue-400 to-cyan-500"
+    },
+    {
+      title: "Python Programming",
+      description: "Start your backend development journey",
+      duration: "10 hours",
+      level: "Beginner",
+      color: "from-purple-400 to-pink-500"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800">
       <Header />
       <Hero />
+      
+      {/* Tutorials Section */}
+      <section id="tutorials" className="py-20 relative">
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-purple-300/30 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <BookOpen className="text-purple-400" size={24} />
+              <h2 className="text-4xl lg:text-5xl font-bold text-white">Start Learning</h2>
+              <BookOpen className="text-purple-400" size={24} />
+            </div>
+            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+              Begin your coding journey with our structured learning paths
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {tutorials.map((tutorial, index) => (
+              <div key={index} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 group cursor-pointer">
+                <div className={`w-12 h-12 bg-gradient-to-br ${tutorial.color} rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                  <Play className="text-white" size={20} />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">{tutorial.title}</h3>
+                <p className="text-slate-400 mb-4">{tutorial.description}</p>
+                <div className="flex justify-between items-center text-sm">
+                  <span className="text-yellow-400">{tutorial.duration}</span>
+                  <span className="bg-slate-700 text-slate-300 px-2 py-1 rounded">{tutorial.level}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       
       {/* Featured Articles Section */}
       <section id="articles" className="py-20 relative">

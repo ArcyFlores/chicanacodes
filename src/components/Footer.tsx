@@ -8,9 +8,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-                <span className="text-slate-900 font-bold text-sm">C</span>
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="w-10 h-10">
+                <img 
+                  src="/lovable-uploads/df36c27f-1399-4270-92c7-fe40c5eb1038.png" 
+                  alt="Chicana Codes Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <span className="text-white font-bold text-xl">Chicana Codes</span>
             </div>

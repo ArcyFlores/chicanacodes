@@ -9,9 +9,13 @@ const Header = () => {
     <header className="fixed top-0 w-full bg-slate-900/95 backdrop-blur-sm z-50 border-b border-slate-700">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-              <span className="text-slate-900 font-bold text-sm">C</span>
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10">
+              <img 
+                src="/lovable-uploads/df36c27f-1399-4270-92c7-fe40c5eb1038.png" 
+                alt="Chicana Codes Logo"
+                className="w-full h-full object-contain"
+              />
             </div>
             <span className="text-white font-bold text-xl">Chicana Codes</span>
           </div>
