@@ -1,5 +1,6 @@
 
 import { Calendar, User, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface BlogCardProps {
   title: string;
@@ -9,9 +10,15 @@ interface BlogCardProps {
   category: string;
   readTime: string;
   image?: string;
+  slug?: string;
 }
 
-const BlogCard = ({ title, excerpt, author, date, category, readTime, image }: BlogCardProps) => {
+const BlogCard = ({ title, excerpt, author, date, category, readTime, image, slug }: BlogCardProps) => {
+  // Generate slug from title if not provided
+  const articleSlug = slug || title.toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+
   return (
     <article className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 group">
       {image && (
@@ -46,10 +53,13 @@ const BlogCard = ({ title, excerpt, author, date, category, readTime, image }: B
           {excerpt}
         </p>
         
-        <button className="flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-semibold transition-colors group-hover:translate-x-1 transform duration-300">
+        <Link 
+          to={`/articles/${articleSlug}`}
+          className="flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-semibold transition-colors group-hover:translate-x-1 transform duration-300"
+        >
           Read More
           <ArrowRight size={16} />
-        </button>
+        </Link>
       </div>
     </article>
   );

@@ -1,4 +1,3 @@
-
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import BlogCard from '../components/BlogCard';
@@ -13,7 +12,8 @@ const Index = () => {
       author: "Maria Rodriguez",
       date: "Dec 1, 2024",
       category: "React",
-      readTime: "8 min"
+      readTime: "8 min",
+      slug: "getting-started-with-react-a-beginners-journey"
     },
     {
       title: "JavaScript ES6+ Features Every Developer Should Know",
@@ -21,7 +21,8 @@ const Index = () => {
       author: "Sofia Garcia",
       date: "Nov 28, 2024",
       category: "JavaScript",
-      readTime: "12 min"
+      readTime: "12 min",
+      slug: "javascript-es6-features-every-developer-should-know"
     },
     {
       title: "Building Your First Portfolio Website",
@@ -29,7 +30,8 @@ const Index = () => {
       author: "Ana Martinez",
       date: "Nov 25, 2024",
       category: "Career",
-      readTime: "15 min"
+      readTime: "15 min",
+      slug: "building-your-first-portfolio-website"
     },
     {
       title: "CSS Grid vs Flexbox: When to Use What",
@@ -37,7 +39,8 @@ const Index = () => {
       author: "Carmen Diaz",
       date: "Nov 22, 2024",
       category: "CSS",
-      readTime: "10 min"
+      readTime: "10 min",
+      slug: "css-grid-vs-flexbox-when-to-use-what"
     },
     {
       title: "Introduction to Python for Web Development",
@@ -45,7 +48,8 @@ const Index = () => {
       author: "Isabella Santos",
       date: "Nov 20, 2024",
       category: "Python",
-      readTime: "14 min"
+      readTime: "14 min",
+      slug: "introduction-to-python-for-web-development"
     },
     {
       title: "Breaking into Tech: A Latina's Success Story",
@@ -53,7 +57,8 @@ const Index = () => {
       author: "Gabriela Flores",
       date: "Nov 18, 2024",
       category: "Career",
-      readTime: "7 min"
+      readTime: "7 min",
+      slug: "breaking-into-tech-a-latinas-success-story"
     }
   ];
 
