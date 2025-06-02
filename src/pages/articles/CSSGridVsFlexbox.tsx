@@ -427,7 +427,7 @@ Master both, and you'll be able to create any layout with confidence and ease. H
       <Header />
       <ArticlePage
         title="CSS Grid vs Flexbox: When to Use What"
-        author="Carmen Diaz"
+        author="@chicanacodes"
         date="Nov 22, 2024"
         category="CSS"
         readTime="10 min"

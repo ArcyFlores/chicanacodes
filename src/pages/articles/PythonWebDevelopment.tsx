@@ -496,7 +496,7 @@ Remember: Every expert was once a beginner. With Python's supportive community a
       <Header />
       <ArticlePage
         title="Introduction to Python for Web Development"
-        author="Isabella Santos"
+        author="@chicanacodes"
         date="Nov 20, 2024"
         category="Python"
         readTime="14 min"

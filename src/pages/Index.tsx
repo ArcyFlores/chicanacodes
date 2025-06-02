@@ -1,3 +1,4 @@
+
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import BlogCard from '../components/BlogCard';
@@ -9,7 +10,7 @@ const Index = () => {
     {
       title: "Getting Started with React: A Beginner's Journey",
       excerpt: "Learn the fundamentals of React and build your first interactive web application with step-by-step guidance.",
-      author: "Maria Rodriguez",
+      author: "@chicanacodes",
       date: "Dec 1, 2024",
       category: "React",
       readTime: "8 min",
@@ -18,7 +19,7 @@ const Index = () => {
     {
       title: "JavaScript ES6+ Features Every Developer Should Know",
       excerpt: "Explore modern JavaScript features that will make your code cleaner, more efficient, and easier to maintain.",
-      author: "Sofia Garcia",
+      author: "@chicanacodes",
       date: "Nov 28, 2024",
       category: "JavaScript",
       readTime: "12 min",
@@ -27,7 +28,7 @@ const Index = () => {
     {
       title: "Building Your First Portfolio Website",
       excerpt: "Create a stunning portfolio that showcases your projects and skills to potential employers in the tech industry.",
-      author: "Ana Martinez",
+      author: "@chicanacodes",
       date: "Nov 25, 2024",
       category: "Career",
       readTime: "15 min",
@@ -36,7 +37,7 @@ const Index = () => {
     {
       title: "CSS Grid vs Flexbox: When to Use What",
       excerpt: "Master the art of layout design by understanding the strengths and use cases of CSS Grid and Flexbox.",
-      author: "Carmen Diaz",
+      author: "@chicanacodes",
       date: "Nov 22, 2024",
       category: "CSS",
       readTime: "10 min",
@@ -45,7 +46,7 @@ const Index = () => {
     {
       title: "Introduction to Python for Web Development",
       excerpt: "Discover how Python can power your web applications with frameworks like Django and Flask.",
-      author: "Isabella Santos",
+      author: "@chicanacodes",
       date: "Nov 20, 2024",
       category: "Python",
       readTime: "14 min",
@@ -54,7 +55,7 @@ const Index = () => {
     {
       title: "Breaking into Tech: A Latina's Success Story",
       excerpt: "Inspiring journey of overcoming challenges and building a successful career in the technology industry.",
-      author: "Gabriela Flores",
+      author: "@chicanacodes",
       date: "Nov 18, 2024",
       category: "Career",
       readTime: "7 min",

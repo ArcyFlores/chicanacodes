@@ -1,3 +1,4 @@
+
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import ArticlePage from '../../components/ArticlePage';
@@ -215,7 +216,7 @@ Remember: Practice makes perfect. Don't try to learn everything at once. Pick on
       <Header />
       <ArticlePage
         title="JavaScript ES6+ Features Every Developer Should Know"
-        author="Sofia Garcia"
+        author="@chicanacodes"
         date="Nov 28, 2024"
         category="JavaScript"
         readTime="12 min"
