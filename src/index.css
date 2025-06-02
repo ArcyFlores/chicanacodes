@@ -107,4 +107,17 @@
       transform: translateY(-10px);
     }
   }
+
+  .animate-slide-down {
+    animation: slide-down 6s linear infinite;
+  }
+
+  @keyframes slide-down {
+    0% { 
+      transform: translateY(-100vh); 
+    }
+    100% { 
+      transform: translateY(100vh); 
+    }
+  }
 }

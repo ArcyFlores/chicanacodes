@@ -129,10 +129,9 @@ const Hero = () => {
               {[...Array(8)].map((_, i) => (
                 <div
                   key={i}
-                  className="absolute text-green-400 font-mono text-xs"
+                  className="absolute text-green-400 font-mono text-xs animate-slide-down"
                   style={{
                     left: `${10 + i * 12}%`,
-                    animation: `slide-down 6s linear infinite`,
                     animationDelay: `${i * 0.5}s`
                   }}
                 >
@@ -171,13 +170,6 @@ const Hero = () => {
       <div className="absolute top-20 left-10 w-16 h-16 bg-gradient-to-br from-yellow-300 to-yellow-500 rounded-full">
         <div className="absolute top-2 right-2 w-12 h-12 bg-slate-900 rounded-full"></div>
       </div>
-
-      <style jsx>{`
-        @keyframes slide-down {
-          0% { transform: translateY(-100vh); }
-          100% { transform: translateY(100vh); }
-        }
-      `}</style>
     </section>
   );
 };
