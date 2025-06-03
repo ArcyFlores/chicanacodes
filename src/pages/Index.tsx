@@ -128,14 +128,11 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {tutorials.map((tutorial, index) => {
-              const TutorialCard = tutorial.link ? Link : 'div';
-              const cardProps = tutorial.link ? { to: tutorial.link } : {};
-              
-              return (
-                <TutorialCard 
+            {tutorials.map((tutorial, index) => (
+              tutorial.link ? (
+                <Link 
                   key={index} 
-                  {...cardProps}
+                  to={tutorial.link}
                   className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 group cursor-pointer block"
                 >
                   <div className={`w-12 h-12 bg-gradient-to-br ${tutorial.color} rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
@@ -147,16 +144,30 @@ const Index = () => {
                     <span className="text-yellow-400">{tutorial.duration}</span>
                     <span className="bg-slate-700 text-slate-300 px-2 py-1 rounded">{tutorial.level}</span>
                   </div>
-                </TutorialCard>
-              );
-            })}
+                </Link>
+              ) : (
+                <div 
+                  key={index}
+                  className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 group cursor-pointer"
+                >
+                  <div className={`w-12 h-12 bg-gradient-to-br ${tutorial.color} rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                    <Play className="text-white" size={20} />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">{tutorial.title}</h3>
+                  <p className="text-slate-400 mb-4">{tutorial.description}</p>
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-yellow-400">{tutorial.duration}</span>
+                    <span className="bg-slate-700 text-slate-300 px-2 py-1 rounded">{tutorial.level}</span>
+                  </div>
+                </div>
+              )
+            ))}
           </div>
         </div>
       </section>
       
       {/* Featured Articles Section */}
       <section id="articles" className="py-20 relative">
-        {/* Background Stars */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(30)].map((_, i) => (
             <div
