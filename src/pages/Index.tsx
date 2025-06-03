@@ -1,9 +1,9 @@
-
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import BlogCard from '../components/BlogCard';
 import Footer from '../components/Footer';
 import { Star, Sparkles, Code, Rocket, BookOpen, Play } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
   const featuredArticles = [
@@ -69,7 +69,8 @@ const Index = () => {
       description: "Master the building blocks of web development",
       duration: "4 hours",
       level: "Beginner",
-      color: "from-green-400 to-emerald-500"
+      color: "from-green-400 to-emerald-500",
+      link: "/learn/html-css-fundamentals"
     },
     {
       title: "JavaScript Essentials",
@@ -127,19 +128,28 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {tutorials.map((tutorial, index) => (
-              <div key={index} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 group cursor-pointer">
-                <div className={`w-12 h-12 bg-gradient-to-br ${tutorial.color} rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                  <Play className="text-white" size={20} />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">{tutorial.title}</h3>
-                <p className="text-slate-400 mb-4">{tutorial.description}</p>
-                <div className="flex justify-between items-center text-sm">
-                  <span className="text-yellow-400">{tutorial.duration}</span>
-                  <span className="bg-slate-700 text-slate-300 px-2 py-1 rounded">{tutorial.level}</span>
-                </div>
-              </div>
-            ))}
+            {tutorials.map((tutorial, index) => {
+              const TutorialCard = tutorial.link ? Link : 'div';
+              const cardProps = tutorial.link ? { to: tutorial.link } : {};
+              
+              return (
+                <TutorialCard 
+                  key={index} 
+                  {...cardProps}
+                  className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 group cursor-pointer block"
+                >
+                  <div className={`w-12 h-12 bg-gradient-to-br ${tutorial.color} rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                    <Play className="text-white" size={20} />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">{tutorial.title}</h3>
+                  <p className="text-slate-400 mb-4">{tutorial.description}</p>
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-yellow-400">{tutorial.duration}</span>
+                    <span className="bg-slate-700 text-slate-300 px-2 py-1 rounded">{tutorial.level}</span>
+                  </div>
+                </TutorialCard>
+              );
+            })}
           </div>
         </div>
       </section>
