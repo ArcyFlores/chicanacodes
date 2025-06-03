@@ -9,6 +9,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import HtmlCssFundamentals from "./pages/HtmlCssFundamentals";
+import CategoryPage from "./pages/CategoryPage";
 
 // Article pages
 import ReactBeginnerGuide from "./pages/articles/ReactBeginnerGuide";
@@ -31,6 +32,9 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/learn/html-css-fundamentals" element={<HtmlCssFundamentals />} />
+          
+          {/* Category route */}
+          <Route path="/category/:category" element={<CategoryPage />} />
           
           {/* Article routes */}
           <Route path="/articles/getting-started-with-react-a-beginners-journey" element={<ReactBeginnerGuide />} />
