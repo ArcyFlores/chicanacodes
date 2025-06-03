@@ -497,7 +497,7 @@ Remember: Every expert was once a beginner. With Python's supportive community a
       <ArticlePage
         title="Introduction to Python for Web Development"
         author="@chicanacodes"
-        date="Nov 20, 2024"
+        date="Jun 2, 2025"
         category="Python"
         readTime="14 min"
         content={content}

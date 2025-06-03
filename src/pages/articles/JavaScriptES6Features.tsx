@@ -217,7 +217,7 @@ Remember: Practice makes perfect. Don't try to learn everything at once. Pick on
       <ArticlePage
         title="JavaScript ES6+ Features Every Developer Should Know"
         author="@chicanacodes"
-        date="Nov 28, 2024"
+        date="Jun 2, 2025"
         category="JavaScript"
         readTime="12 min"
         content={content}

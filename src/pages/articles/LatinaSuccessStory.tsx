@@ -299,7 +299,7 @@ The industry is waiting for your unique perspective, your problem-solving skills
       <ArticlePage
         title="Breaking into Tech: A Latina's Success Story"
         author="Gabriela Flores"
-        date="Nov 18, 2024"
+        date="Jun 2, 2025"
         category="Career"
         readTime="7 min"
         content={content}

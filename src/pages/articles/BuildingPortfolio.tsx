@@ -238,7 +238,7 @@ Your portfolio is often the first thing potential employers see. Make it count! 
       <ArticlePage
         title="Building Your First Portfolio Website"
         author="@chicanacodes"
-        date="Nov 25, 2024"
+        date="Jun 2, 2025"
         category="Career"
         readTime="15 min"
         content={content}

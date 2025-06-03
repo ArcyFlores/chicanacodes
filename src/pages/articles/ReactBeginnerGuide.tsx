@@ -101,7 +101,7 @@ React is a powerful tool that opens up many opportunities in web development. Th
       <ArticlePage
         title="Getting Started with React: A Beginner's Journey"
         author="@chicanacodes"
-        date="Dec 1, 2024"
+        date="Jun 2, 2025"
         category="React"
         readTime="8 min"
         content={content}
