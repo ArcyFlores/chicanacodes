@@ -78,7 +78,8 @@ const Index = () => {
       description: "Learn programming logic and interactivity",
       duration: "6 hours",
       level: "Beginner",
-      color: "from-yellow-400 to-orange-500"
+      color: "from-yellow-400 to-orange-500",
+      link: "/learn/javascript-essentials"
     },
     {
       title: "React Development",
