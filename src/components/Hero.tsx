@@ -1,5 +1,72 @@
+import { useEffect, useRef } from 'react';
 
 const Hero = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // Set canvas size
+    const setCanvasSize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    setCanvasSize();
+    window.addEventListener('resize', setCanvasSize);
+
+    // Star properties
+    const stars: { x: number; y: number; radius: number; speed: number }[] = [];
+    const numStars = 200;
+    const maxRadius = 2;
+
+    // Initialize stars
+    for (let i = 0; i < numStars; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * maxRadius,
+        speed: 0.1 + Math.random() * 0.5
+      });
+    }
+
+    // Animation loop
+    let animationFrameId: number;
+    const animate = () => {
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.2)'; // Matching slate-900 background
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw and update stars
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.fill();
+
+        // Move star
+        star.y += star.speed;
+
+        // Reset star position if it goes off screen
+        if (star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
+        }
+      });
+
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => {
+      window.removeEventListener('resize', setCanvasSize);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -9,21 +76,12 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen bg-gradient-to-b from-slate-900 via-blue-900 to-slate-800 overflow-hidden">
-      {/* Background Stars */}
-      <div className="absolute inset-0">
-        {[...Array(100)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-yellow-300 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 2}s`
-            }}
-          />
-        ))}
-      </div>
+      {/* Star field animation */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full"
+        style={{ opacity: 0.5 }}
+      />
 
       <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-screen pt-20">
@@ -32,16 +90,16 @@ const Hero = () => {
             <div className="mb-8">
               <h1 className="text-5xl lg:text-7xl font-bold mb-6">
                 <span className="bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
-                  Chicana
+                  Hola,
                 </span>
                 <br />
-                <span className="text-white font-mono text-4xl lg:text-6xl">CODES</span>
+                <span className="text-white font-mono text-4xl lg:text-6xl">I'm @chicanacodes</span>
               </h1>
               <p className="text-xl lg:text-2xl text-slate-300 mb-8 leading-relaxed">
-                Empowering Latinas in Tech through Education, Community, and Code
+                Join me on my journey exploring the cosmos of code, where every line written opens new possibilities.
               </p>
               <p className="text-lg text-slate-400 mb-8">
-                Join our cosmic journey of learning programming, web development, and technology skills that will launch your career to new heights.
+                Through tutorials, articles, and shared experiences, I'm here to help you navigate the vast universe of technology.
               </p>
             </div>
             
@@ -56,12 +114,12 @@ const Hero = () => {
                 onClick={() => scrollToSection('articles')}
                 className="border-2 border-yellow-400 text-yellow-400 font-bold py-4 px-8 rounded-full hover:bg-yellow-400 hover:text-slate-900 transition-all duration-300"
               >
-                Browse Articles
+                Read Articles
               </button>
             </div>
           </div>
 
-          {/* Right side - Animated Graphic */}
+          {/* Right side - Space-themed Animation */}
           <div className="relative hidden lg:block">
             {/* Floating Code Blocks */}
             <div className="absolute inset-0">
@@ -123,52 +181,8 @@ const Hero = () => {
                 ></div>
               </div>
             ))}
-
-            {/* Binary Rain Effect */}
-            <div className="absolute inset-0 overflow-hidden opacity-20">
-              {[...Array(8)].map((_, i) => (
-                <div
-                  key={i}
-                  className="absolute text-green-400 font-mono text-xs animate-slide-down"
-                  style={{
-                    left: `${10 + i * 12}%`,
-                    animationDelay: `${i * 0.5}s`
-                  }}
-                >
-                  {Array.from({ length: 20 }, () => Math.random() > 0.5 ? '1' : '0').join('')}
-                </div>
-              ))}
-            </div>
-
-            {/* Floating Geometric Shapes */}
-            {[
-              { shape: 'triangle', x: '20%', y: '15%', delay: '0s' },
-              { shape: 'square', x: '80%', y: '25%', delay: '2s' },
-              { shape: 'hexagon', x: '15%', y: '70%', delay: '4s' },
-              { shape: 'circle', x: '85%', y: '80%', delay: '1s' }
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="absolute w-8 h-8 border-2 border-cyan-400/40 animate-bounce"
-                style={{
-                  left: item.x,
-                  top: item.y,
-                  animationDelay: item.delay,
-                  animationDuration: '3s',
-                  clipPath: item.shape === 'triangle' ? 'polygon(50% 0%, 0% 100%, 100% 100%)' :
-                           item.shape === 'hexagon' ? 'polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)' :
-                           item.shape === 'square' ? 'none' : 'circle()',
-                  borderRadius: item.shape === 'circle' ? '50%' : '0'
-                }}
-              ></div>
-            ))}
           </div>
         </div>
-      </div>
-
-      {/* Crescent Moon */}
-      <div className="absolute top-20 left-10 w-16 h-16 bg-gradient-to-br from-yellow-300 to-yellow-500 rounded-full">
-        <div className="absolute top-2 right-2 w-12 h-12 bg-slate-900 rounded-full"></div>
       </div>
     </section>
   );
