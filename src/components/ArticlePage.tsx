@@ -1,4 +1,3 @@
-
 import { Calendar, User, ArrowLeft, Tag } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Badge } from './ui/badge';
@@ -10,7 +9,6 @@ import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-css';
-import 'prismjs/components/prism-html';
 
 interface ArticlePageProps {
   title: string;
