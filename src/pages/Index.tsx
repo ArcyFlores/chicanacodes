@@ -1,4 +1,3 @@
-
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import BlogCard from '../components/BlogCard';
@@ -92,9 +91,10 @@ const Index = () => {
     {
       title: "Python Programming",
       description: "Start your backend development journey",
-      duration: "10 hours",
+      duration: "16 hours",
       level: "Beginner",
-      color: "from-purple-400 to-pink-500"
+      color: "from-purple-400 to-pink-500",
+      link: "/learn/python-programming"
     }
   ];
 
