@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { ArrowLeft, CheckCircle, Circle, Play, Clock, Users, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -16,6 +15,14 @@ const JavaScriptEssentials = () => {
         ? prev.filter(id => id !== lessonId)
         : [...prev, lessonId]
     );
+  };
+
+  const startFirstLesson = () => {
+    // For now, just mark lesson 1 as started and scroll to it
+    const firstLessonElement = document.getElementById('lesson-1');
+    if (firstLessonElement) {
+      firstLessonElement.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const lessons = [
@@ -140,7 +147,10 @@ const JavaScriptEssentials = () => {
               </div>
             </div>
 
-            <Button className="bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900 font-bold px-8 py-3 hover:shadow-lg hover:shadow-yellow-400/25 transition-all duration-300">
+            <Button 
+              onClick={startFirstLesson}
+              className="bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900 font-bold px-8 py-3 hover:shadow-lg hover:shadow-yellow-400/25 transition-all duration-300"
+            >
               {completedLessons.length === 0 ? 'Start Learning' : 'Continue Learning'}
             </Button>
           </div>
@@ -151,7 +161,7 @@ const JavaScriptEssentials = () => {
             
             <div className="space-y-4">
               {lessons.map((lesson) => (
-                <Card key={lesson.id} className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
+                <Card key={lesson.id} id={`lesson-${lesson.id}`} className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
                   <CardHeader className="pb-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4">
