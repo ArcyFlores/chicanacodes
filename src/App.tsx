@@ -10,6 +10,7 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import HtmlCssFundamentals from "./pages/HtmlCssFundamentals";
 import JavaScriptEssentials from "./pages/JavaScriptEssentials";
+import ReactDevelopment from "./pages/ReactDevelopment";
 import CategoryPage from "./pages/CategoryPage";
 
 // Article pages
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/learn/html-css-fundamentals" element={<HtmlCssFundamentals />} />
           <Route path="/learn/javascript-essentials" element={<JavaScriptEssentials />} />
+          <Route path="/learn/react-development" element={<ReactDevelopment />} />
           
           {/* Category route */}
           <Route path="/category/:category" element={<CategoryPage />} />

@@ -86,7 +86,8 @@ const Index = () => {
       description: "Build modern web applications",
       duration: "8 hours",
       level: "Intermediate",
-      color: "from-blue-400 to-cyan-500"
+      color: "from-blue-400 to-cyan-500",
+      link: "/learn/react-development"
     },
     {
       title: "Python Programming",
