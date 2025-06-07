@@ -2,6 +2,15 @@
 import { Calendar, User, ArrowLeft, Tag } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Badge } from './ui/badge';
+import { useEffect } from 'react';
+import Prism from 'prismjs';
+import 'prismjs/themes/prism-tomorrow.css';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-jsx';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-python';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-html';
 
 interface ArticlePageProps {
   title: string;
@@ -13,6 +22,10 @@ interface ArticlePageProps {
 }
 
 const ArticlePage = ({ title, author, date, category, readTime, content }: ArticlePageProps) => {
+  useEffect(() => {
+    Prism.highlightAll();
+  }, [content]);
+
   const getCategoryColor = (cat: string) => {
     const colors = {
       'React': 'bg-blue-500 hover:bg-blue-600 text-white',
@@ -28,6 +41,136 @@ const ArticlePage = ({ title, author, date, category, readTime, content }: Artic
 
   const getCategorySlug = (cat: string) => {
     return cat.toLowerCase().replace(/\s+/g, '-');
+  };
+
+  const parseContent = (text: string) => {
+    const lines = text.split('\n');
+    const elements: JSX.Element[] = [];
+    let currentCodeBlock = '';
+    let codeLanguage = '';
+    let inCodeBlock = false;
+    let listItems: string[] = [];
+    let inList = false;
+
+    const processListItems = () => {
+      if (listItems.length > 0) {
+        elements.push(
+          <ul key={`list-${elements.length}`} className="list-disc list-inside space-y-2 mb-6 text-slate-300">
+            {listItems.map((item, idx) => (
+              <li key={idx} className="leading-relaxed">{item}</li>
+            ))}
+          </ul>
+        );
+        listItems = [];
+        inList = false;
+      }
+    };
+
+    lines.forEach((line, index) => {
+      // Handle code blocks
+      if (line.startsWith('```')) {
+        if (inCodeBlock) {
+          // End code block
+          elements.push(
+            <div key={`code-${elements.length}`} className="mb-6">
+              <pre className="bg-slate-800 rounded-lg p-4 overflow-x-auto">
+                <code className={`language-${codeLanguage}`}>
+                  {currentCodeBlock.trim()}
+                </code>
+              </pre>
+            </div>
+          );
+          currentCodeBlock = '';
+          codeLanguage = '';
+          inCodeBlock = false;
+        } else {
+          // Start code block
+          processListItems();
+          codeLanguage = line.replace('```', '').trim() || 'javascript';
+          inCodeBlock = true;
+        }
+        return;
+      }
+
+      if (inCodeBlock) {
+        currentCodeBlock += line + '\n';
+        return;
+      }
+
+      // Handle headers
+      if (line.startsWith('## ')) {
+        processListItems();
+        elements.push(
+          <h2 key={`h2-${elements.length}`} className="text-2xl font-bold text-white mt-8 mb-4 border-b border-slate-700 pb-2">
+            {line.replace('## ', '')}
+          </h2>
+        );
+        return;
+      }
+
+      if (line.startsWith('### ')) {
+        processListItems();
+        elements.push(
+          <h3 key={`h3-${elements.length}`} className="text-xl font-semibold text-white mt-6 mb-3">
+            {line.replace('### ', '')}
+          </h3>
+        );
+        return;
+      }
+
+      // Handle list items
+      if (line.match(/^\d+\.\s/) || line.startsWith('- ')) {
+        const listItem = line.replace(/^\d+\.\s/, '').replace(/^- /, '');
+        listItems.push(listItem);
+        inList = true;
+        return;
+      }
+
+      // Handle inline code
+      const processInlineElements = (text: string) => {
+        const parts = text.split(/(`[^`]+`)/);
+        return parts.map((part, idx) => {
+          if (part.startsWith('`') && part.endsWith('`')) {
+            return (
+              <code key={idx} className="bg-slate-700 text-yellow-400 px-2 py-1 rounded text-sm">
+                {part.slice(1, -1)}
+              </code>
+            );
+          }
+          // Handle bold text
+          if (part.includes('**')) {
+            const boldParts = part.split(/(\*\*[^*]+\*\*)/);
+            return boldParts.map((boldPart, boldIdx) => {
+              if (boldPart.startsWith('**') && boldPart.endsWith('**')) {
+                return <strong key={`${idx}-${boldIdx}`} className="font-semibold text-white">{boldPart.slice(2, -2)}</strong>;
+              }
+              return boldPart;
+            });
+          }
+          return part;
+        });
+      };
+
+      // Handle regular paragraphs
+      if (line.trim() && !inList) {
+        processListItems();
+        elements.push(
+          <p key={`p-${elements.length}`} className="text-slate-300 leading-relaxed mb-4">
+            {processInlineElements(line)}
+          </p>
+        );
+      }
+
+      // Handle empty lines
+      if (!line.trim() && !inList) {
+        processListItems();
+      }
+    });
+
+    // Process any remaining list items
+    processListItems();
+
+    return elements;
   };
 
   return (
@@ -67,8 +210,8 @@ const ArticlePage = ({ title, author, date, category, readTime, content }: Artic
           </header>
           
           <div className="prose prose-lg prose-invert max-w-none">
-            <div className="text-slate-300 leading-relaxed whitespace-pre-line">
-              {content}
+            <div className="text-slate-300 leading-relaxed">
+              {parseContent(content)}
             </div>
           </div>
 
