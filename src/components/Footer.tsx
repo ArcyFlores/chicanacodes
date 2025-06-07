@@ -1,3 +1,4 @@
+
 import { Heart } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -135,44 +136,44 @@ const Footer = () => {
             <h4 className="text-white font-semibold mb-4">Categories</h4>
             <ul className="space-y-2">
               <li>
-                <button 
-                  onClick={() => scrollToSection('tutorials')}
+                <Link 
+                  to="/category/web-development"
                   className="text-slate-400 hover:text-yellow-400 transition-colors"
                 >
                   Web Development
-                </button>
+                </Link>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('tutorials')}
+                <Link 
+                  to="/category/javascript"
                   className="text-slate-400 hover:text-yellow-400 transition-colors"
                 >
                   JavaScript
-                </button>
+                </Link>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('tutorials')}
+                <Link 
+                  to="/category/react"
                   className="text-slate-400 hover:text-yellow-400 transition-colors"
                 >
                   React
-                </button>
+                </Link>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('tutorials')}
+                <Link 
+                  to="/category/python"
                   className="text-slate-400 hover:text-yellow-400 transition-colors"
                 >
                   Python
-                </button>
+                </Link>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('articles')}
+                <Link 
+                  to="/category/career"
                   className="text-slate-400 hover:text-yellow-400 transition-colors"
                 >
                   Career Tips
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
